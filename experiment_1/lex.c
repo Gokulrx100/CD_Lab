@@ -2,11 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 
-char keywords[32][10] = {
+char keywords[22][10] = {
     "break","case","char","const","continue","default","do",
-    "else","enum","extern","float","for","goto","if","int","return",
-    "signed", "sizeof","static","struct","switch","union","unsigned",
-    "void","volatile", "while"
+    "else","enum","float","for","goto","if","int","return", 
+    "sizeof","static","struct","switch","union",
+    "void", "while"
 };
 
 // Check if a word is a keyword
