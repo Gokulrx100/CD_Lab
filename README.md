@@ -8,13 +8,22 @@ This repository contains source code and instructions for various experiments co
 
 ## Table of Contents
 
-| Experiment Name         | Description                      | Instructions                |
-|------------------------|----------------------------------|-----------------------------|
+### Experiment 1
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
 | Lexical Analyzer (`lex.c`) | Identifies tokens in C source code | [See below](#lexical-analyzer-lexc) |
+
+### Experiment 2 
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
 | Vowel/Consonant Counter (`part1.l`) | Counts vowels and consonants in input text | [See below](#vowelconsonant-counter-part1l) |
 | Character/Word/Line Counter (`part2.l`) | Counts characters, words, and lines in a file | [See below](#characterwordline-counter-part2l) |
+| LEX Lexical Analyzer (`part3.l`) | LEX-based token identifier for C source code | [See below](#lex-lexical-analyzer-part3l) |
+| Email Validator (`part4.l`) | Validates email addresses using LEX | [See below](#email-validator-part4l) |
 
 ---
+
+# Experiment 1
 
 ## Lexical Analyzer (`lex.c`)
 
@@ -38,6 +47,8 @@ The lexical analyzer reads a C source file (`input.c`) and identifies tokens suc
 4. Check `output.txt` for the list of tokens identified.
 
 ---
+
+# Experiment 2
 
 ## Vowel/Consonant Counter (`part1.l`)
 
@@ -85,6 +96,56 @@ A LEX program that counts the number of characters, words, and lines in a text f
    ./part2.exe
    ```
 5. The program will display the count of characters, words, and lines.
+
+---
+
+## LEX Lexical Analyzer (`part3.l`)
+
+**Description:**  
+A LEX-based lexical analyzer that reads a C source file and identifies various tokens including keywords, identifiers, numbers, operators, separators, and preprocessor directives. Results are written to an output file.
+
+**Requirements:**  
+- LEX/Flex compiler
+- Input file: `input.c` (C source code to analyze)
+- Output file: `output.txt` (tokens will be written here)
+
+**How to Run:**
+1. Navigate to the `experiment_2` directory.
+2. Create an `input.c` file with the C source code you want to analyze.
+3. Compile the LEX file:
+   ```sh
+   flex part3.l
+   gcc lex.yy.c -o part3.exe
+   ```
+4. Run the executable:
+   ```sh
+   ./part3.exe
+   ```
+5. Check `output.txt` for the list of identified tokens.
+
+---
+
+## Email Validator (`part4.l`)
+
+**Description:**  
+A LEX program that validates email addresses. It checks if the entered email follows the basic pattern of having alphanumeric characters, dots, underscores before the @ symbol, followed by a domain ending with .com.
+
+**Requirements:**  
+- LEX/Flex compiler
+- User input (email address entered via keyboard)
+
+**How to Run:**
+1. Navigate to the `experiment_2` directory.
+2. Compile the LEX file:
+   ```sh
+   flex part4.l
+   gcc lex.yy.c -o part4.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./part4.exe
+   ```
+4. Enter an email address to validate and press Enter to see if it's valid or invalid.
 
 ---
 
