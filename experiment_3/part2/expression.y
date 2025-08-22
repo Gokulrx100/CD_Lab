@@ -7,9 +7,9 @@ int yylex(void);
 
 %token NUMBER
 
-%left '+' '-'       
-%left '*' '/'  
-%left UMINUS         
+%left '+' '-'        /* lowest precedence */
+%left '*' '/'        /* higher precedence */
+%left UMINUS         /* unary minus (highest precedence) */
 
 %%
 
@@ -22,7 +22,7 @@ expr:
     | expr '-' expr
     | expr '*' expr
     | expr '/' expr
-    | '-' expr %prec UMINUS  
+    | '-' expr %prec UMINUS   /* unary minus */
     | '(' expr ')'
     | NUMBER
     ;
@@ -30,7 +30,7 @@ expr:
 %%
 
 int main() {
-    printf("Enter an expression: ");
+    printf("Enter an expression(press ctrl + D) : ");
     yyparse();
     return 0;
 }
