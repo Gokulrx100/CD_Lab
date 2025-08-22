@@ -39,6 +39,11 @@ This repository contains source code and instructions for various experiments co
 |--------------|-------------|--------------|
 | E-NFA to NFA Converter (`EnfaToDfa.c`) | Converts Epsilon-NFA to NFA using epsilon closure elimination | [See below](#e-nfa-to-nfa-converter-enfatodfac) |
 
+### Experiment 6
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Recursive Descent Parser (`RecursiveDescentParser.c`) | Implements recursive descent parsing for arithmetic expressions | [See below](#recursive-descent-parser-recursivedescentparserc) |
+
 ---
 
 # Experiment 1
@@ -333,4 +338,37 @@ A C program that converts an Epsilon-NFA (ε-NFA) to an equivalent NFA by elimin
 
 ---
 
-*You can prompt to update this README as new experiments are added.*
+# Experiment 6
+
+## Recursive Descent Parser (`RecursiveDescentParser.c`)
+
+**Description:**  
+A C program that implements a recursive descent parser for arithmetic expressions. The parser validates expressions based on the grammar: 
+```sh
+E → T E'
+E' → T E' | ε
+T → F T'
+T' → * F T' | ε
+F → (E) | id
+```
+It demonstrates top-down parsing techniques.
+
+**Requirements:**  
+- C compiler (gcc)
+- User input (arithmetic expression to parse)
+- Supports: identifiers (letters), multiplication (*), and parentheses
+
+**How to Run:**
+1. Navigate to the `experiment_6` directory.
+2. Compile the program:
+   ```sh
+   gcc RecursiveDescentParser.c -o parser.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./parser.exe
+   ```
+4. Enter an arithmetic expression (e.g., "a*b", "a*(b*c)", "(a*b)*c")
+5. The program will output whether the expression is syntactically valid or show a syntax error.
+
+---
