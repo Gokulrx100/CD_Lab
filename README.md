@@ -21,6 +21,14 @@ This repository contains source code and instructions for various experiments co
 | LEX Lexical Analyzer (`part3.l`) | LEX-based token identifier for C source code | [See below](#lex-lexical-analyzer-part3l) |
 | Email Validator (`part4.l`) | Validates email addresses using LEX | [See below](#email-validator-part4l) |
 
+### Experiment 3
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Identifier Validator (`identifier.y/.l`) | Validates C identifiers using YACC/LEX | [See below](#identifier-validator-identifiery-l) |
+| Expression Validator (`expression.y/.l`) | Validates arithmetic expressions using YACC/LEX | [See below](#expression-validator-expressiony-l) |
+| Calculator (`calc.y/.l`) | Simple calculator with arithmetic operations | [See below](#calculator-calcy-l) |
+| String Recognizer (`recog.y/.l`) | Recognizes strings of form a^n b^n | [See below](#string-recognizer-recogy-l) |
+
 ---
 
 # Experiment 1
@@ -146,6 +154,112 @@ A LEX program that validates email addresses. It checks if the entered email fol
    ./part4.exe
    ```
 4. Enter an email address to validate and press Enter to see if it's valid or invalid.
+
+---
+
+# Experiment 3
+
+## Identifier Validator (`identifier.y/.l`)
+
+**Description:**  
+A YACC/LEX program that validates C identifiers. It checks if the entered string follows the rules for valid C identifiers (starts with letter or underscore, followed by letters, digits, or underscores).
+
+**Requirements:**  
+- YACC/Bison compiler
+- LEX/Flex compiler
+- User input (identifier to validate)
+
+**How to Run:**
+1. Navigate to the `experiment_3/part1` directory.
+2. Compile the YACC and LEX files:
+   ```sh
+   yacc -d identifier.y
+   flex identifier.l
+   gcc y.tab.c lex.yy.c -o identifier.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./identifier.exe
+   ```
+4. Enter an identifier to validate and press Ctrl+D to see if it's valid or invalid.
+
+---
+
+## Expression Validator (`expression.y/.l`)
+
+**Description:**  
+A YACC/LEX program that validates arithmetic expressions. It checks if the entered expression follows proper arithmetic syntax with correct operator precedence and parentheses matching.
+
+**Requirements:**  
+- YACC/Bison compiler
+- LEX/Flex compiler
+- User input (arithmetic expression to validate)
+
+**How to Run:**
+1. Navigate to the `experiment_3/part2` directory.
+2. Compile the YACC and LEX files:
+   ```sh
+   yacc -d expression.y
+   flex expression.l
+   gcc y.tab.c lex.yy.c -o expression.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./expression.exe
+   ```
+4. Enter an arithmetic expression and press Ctrl+D to see if it's valid.
+
+---
+
+## Calculator (`calc.y/.l`)
+
+**Description:**  
+A YACC/LEX program that implements a simple calculator capable of performing arithmetic operations (+, -, *, /), handling unary minus, and respecting operator precedence and parentheses.
+
+**Requirements:**  
+- YACC/Bison compiler
+- LEX/Flex compiler
+- User input (arithmetic expressions to calculate)
+
+**How to Run:**
+1. Navigate to the `experiment_3/part3` directory.
+2. Compile the YACC and LEX files:
+   ```sh
+   yacc -d calc.y
+   flex calc.l
+   gcc y.tab.c lex.yy.c -o calc.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./calc.exe
+   ```
+4. Enter arithmetic expressions and press Enter to see the results. Press Ctrl+D to quit.
+
+---
+
+## String Recognizer (`recog.y/.l`)
+
+**Description:**  
+A YACC/LEX program that recognizes strings of the form a^n b^n (equal number of 'a's followed by equal number of 'b's). This demonstrates context-free grammar parsing.
+
+**Requirements:**  
+- YACC/Bison compiler
+- LEX/Flex compiler
+- User input (string to validate)
+
+**How to Run:**
+1. Navigate to the `experiment_3/part4` directory.
+2. Compile the YACC and LEX files:
+   ```sh
+   yacc -d recog.y
+   flex recog.l
+   gcc y.tab.c lex.yy.c -o recog.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./recog.exe
+   ```
+4. Enter a string (e.g., "aabb", "aaabbb") and press Enter to see if it matches the pattern a^n b^n.
 
 ---
 
