@@ -29,6 +29,16 @@ This repository contains source code and instructions for various experiments co
 | Calculator (`calc.y/.l`) | Simple calculator with arithmetic operations | [See below](#calculator-calcy-l) |
 | String Recognizer (`recog.y/.l`) | Recognizes strings of form a^n b^n | [See below](#string-recognizer-recogy-l) |
 
+### Experiment 4
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Epsilon Closure (`E-closure.c`) | Finds epsilon closure of states in an Epsilon-NFA | [See below](#epsilon-closure-e-closurec) |
+
+### Experiment 5
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| E-NFA to NFA Converter (`EnfaToDfa.c`) | Converts Epsilon-NFA to NFA using epsilon closure elimination | [See below](#e-nfa-to-nfa-converter-enfatodfac) |
+
 ---
 
 # Experiment 1
@@ -260,6 +270,66 @@ A YACC/LEX program that recognizes strings of the form a^n b^n (equal number of 
    ./recog.exe
    ```
 4. Enter a string (e.g., "aabb", "aaabbb") and press Enter to see if it matches the pattern a^n b^n.
+
+---
+
+# Experiment 4
+
+## Epsilon Closure (`E-closure.c`)
+
+**Description:**  
+A C program that finds the epsilon closure (ε-closure) of each state in an Epsilon-NFA. The epsilon closure of a state is the set of all states reachable from that state using only epsilon (ε) transitions.
+
+**Requirements:**  
+- C compiler (gcc)
+- Input: Number of states, number of transitions, and transition details
+- Format: `from_state symbol to_state` (use 'e' for epsilon transitions)
+
+**How to Run:**
+1. Navigate to the `experiment_4` directory.
+2. Compile the program:
+   ```sh
+   gcc E-closure.c -o e_closure.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./e_closure.exe
+   ```
+4. Enter the input in the following format:
+   - First line: Number of states
+   - Second line: Number of transitions
+   - Next lines: Transition details (from_state symbol to_state)
+5. The program will output the epsilon closure for each state.
+
+---
+
+# Experiment 5
+
+## E-NFA to NFA Converter (`EnfaToDfa.c`)
+
+**Description:**  
+A C program that converts an Epsilon-NFA (ε-NFA) to an equivalent NFA by eliminating epsilon transitions. The program uses epsilon closure computations to construct the equivalent NFA without epsilon transitions.
+
+**Requirements:**  
+- C compiler (gcc)
+- Input: Number of states, number of transitions, and transition details of the ε-NFA
+- Format: `from_state symbol to_state` (use 'e' for epsilon transitions)
+
+**How to Run:**
+1. Navigate to the `experiment_5` directory.
+2. Compile the program:
+   ```sh
+   gcc EnfaToDfa.c -o enfa_to_nfa.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./enfa_to_nfa.exe
+   ```
+4. Enter the input in the following format:
+   - First line: Number of states
+   - Second line: Number of transitions
+   - Next lines: Transition details (from_state symbol to_state)
+5. The program will output the equivalent NFA transition function without epsilon transitions.
 
 ---
 
