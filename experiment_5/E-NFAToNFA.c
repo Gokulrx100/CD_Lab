@@ -37,8 +37,11 @@ void get_symbols() {
 }
 
 int main() {
+    printf("Enter the number of states  : ");
     scanf("%d", &state_count);
+    printf("Enter the number of transitions : ");
     scanf("%d", &trans_count);
+    printf("Enter the transitions count : ");
     for (int i = 0; i < trans_count; i++)
         scanf("%d %c %d", &trans[i].from, &trans[i].sym, &trans[i].to);
 

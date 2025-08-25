@@ -24,10 +24,13 @@ void dfs_epsilon(int state, bool visited[]) {
 }
 
 int main() {
+    printf("Enter the number of states : ");
     scanf("%d", &state_count);
+    printf("Enter the number of transitions : ");
     scanf("%d", &trans_count);
-
+    printf("Enter the transitions : ");
     for (int i = 0; i < trans_count; i++) {
+
         scanf("%d %c %d", &trans[i].from, &trans[i].sym, &trans[i].to);
     }
 

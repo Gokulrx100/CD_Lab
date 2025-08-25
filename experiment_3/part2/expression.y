@@ -14,7 +14,7 @@ int yylex(void);
 %%
 
 input:
-      expr   { printf("Valid expression\n"); exit(0); }
+      expr   { printf("\nValid expression\n"); exit(0); }
     ;
 
 expr:
@@ -36,5 +36,6 @@ int main() {
 }
 
 int yyerror(char *s) {
+    printf("invalid expression");
     return 0;
 }
