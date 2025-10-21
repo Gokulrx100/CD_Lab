@@ -11,5 +11,3 @@ b   { return B; }
 .   { return yytext[0]; }
 
 %%
-
-
