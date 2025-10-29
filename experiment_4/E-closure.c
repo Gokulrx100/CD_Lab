@@ -11,7 +11,6 @@ struct Transition{
 } trans[MAX_TRANS];
 
 int state_count, trans_count;
-// Transition trans[MAX_TRANS];
 bool closure[MAX_STATES][MAX_STATES];
 
 void dfs_epsilon(int state, bool visited[]) {

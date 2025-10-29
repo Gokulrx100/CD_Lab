@@ -5,14 +5,13 @@
 #define MAX_TRANS 50
 #define MAX_SYMBOLS 20
 
-typedef struct {
+struct Transition{
     int from;
     char sym;
     int to;
-} Transition;
+} trans[MAX_TRANS];
 
 int state_count, trans_count;
-Transition trans[MAX_TRANS];
 bool closure[MAX_STATES][MAX_STATES];
 char symbols[MAX_SYMBOLS];
 int sym_count;
