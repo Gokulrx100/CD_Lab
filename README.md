@@ -62,12 +62,17 @@ This repository contains source code and instructions for various experiments co
 ### Experiment 10
 | Program Name | Description | Instructions |
 |--------------|-------------|--------------|
-| Intermediate Code Generator (`icg.c`) | Generates intermediate code representation (Quadruple & Triple) | [See below](#intermediate-code-generator-icgc) |
+| Intermediate Code Representations (`qt.c`) | Generates intermediate code representation (Quadruple & Triple) | [See below](#intermediate-code-representations-qtc) |
 
 ### Experiment 11
 | Program Name | Description | Instructions |
 |--------------|-------------|--------------|
-| Constant Propagation (`constant_propagation.c`) | Performs constant propagation optimization | [See below](#constant-propagation-constant_propagationc) |
+| Constant Propagation (`cp.c`) | Performs constant propagation optimization | [See below](#constant-propagation-cpc) |
+
+### Experiment 12
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Machine Code Generator (`mc.c`) | Generates 8086 assembly code from intermediate representation | [See below](#machine-code-generator-mcc) |
 
 ---
 
@@ -608,6 +613,64 @@ t1 = 15 + 10
 t2 = 25 - 2
 
 Final Result = 23
+```
+
+---
+
+# Experiment 12
+
+## Machine Code Generator (`mc.c`)
+
+**Description:**  
+A C program that generates assembly-like machine code from three-address code (intermediate representation). It translates each three-address instruction into a sequence of register-based assembly instructions using MOV (move), ADD (addition), SUB (subtraction), MUL (multiplication), and DIV (division) operations. This demonstrates the final code generation phase of a compiler.
+
+**Code Generation Process:**
+1. Reads three-address code statements (format: `result=operand1 operator operand2`)
+2. For each statement, generates three assembly instructions:
+   - MOV: Load first operand into register
+   - Operation (ADD/SUB/MUL/DIV): Perform operation with second operand
+   - MOV: Store result from register to variable
+
+**Requirements:**  
+- C compiler (gcc)
+- User input: 
+  - Number of three-address code statements
+  - Three-address code statements in format: `t=a+b` (no spaces between operators)
+- Supports: operators (+, -, *, /)
+- Uses: Register allocation (R0, R1, R2, ...)
+
+**How to Run:**
+1. Navigate to the `experiment_12` directory.
+2. Compile the program:
+   ```sh
+   gcc mc.c -o mc.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./mc.exe
+   ```
+4. Enter the number of three-address code statements
+5. Enter each statement in the format `result=arg1 op arg2` (e.g., `t=a+b`)
+6. The program will display the generated assembly code
+
+**Example:**
+```
+Input:
+Enter the number of intermediate statements: 3
+t=a+b
+u=t*c
+v=u-d
+
+Output (Generated Assembly Code):
+MOV R0,a
+ADD R0,b
+MOV t,R0
+MOV R1,t
+MUL R1,c
+MOV u,R1
+MOV R2,u
+SUB R2,d
+MOV v,R2
 ```
 
 ---
