@@ -54,6 +54,20 @@ This repository contains source code and instructions for various experiments co
 |--------------|-------------|--------------|
 | Operator Precedence Parser (`op.c`) | Implements operator precedence parsing for expressions | [See below](#operator-precedence-parser-opc) |
 
+### Experiment 9
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Three Address Code Generator (`3ac.c`) | Generates three-address code from arithmetic expressions | [See below](#three-address-code-generator-3acc) |
+
+### Experiment 10
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Intermediate Code Generator (`icg.c`) | Generates intermediate code representation (Quadruple & Triple) | [See below](#intermediate-code-generator-icgc) |
+
+### Experiment 11
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Constant Propagation (`constant_propagation.c`) | Performs constant propagation optimization | [See below](#constant-propagation-constant_propagationc) |
 
 ---
 
@@ -441,5 +455,159 @@ A C program that implements an operator precedence parser for arithmetic express
    ```
 4. Enter an expression using 'i' for identifiers and operators
 5. The program will display the parsing steps with input, stack, and action columns.
+
+---
+
+# Experiment 9
+
+## Three Address Code Generator (`3ac.c`)
+
+**Description:**  
+A C program that converts infix arithmetic expressions to postfix notation and then generates three-address code (intermediate representation). Three-address code uses temporary variables and simple operations with at most three operands.
+
+**Requirements:**  
+- C compiler (gcc)
+- User input (arithmetic expression without spaces)
+- Supports: single-letter operands, operators (+, -, *, /, ^), parentheses
+
+**How to Run:**
+1. Navigate to the `experiment_9` directory.
+2. Compile the program:
+   ```sh
+   gcc 3ac.c -o 3ac.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./3ac.exe
+   ```
+4. Enter an expression (e.g., "a+b*c", "(a+b)*(c-d)/e")
+5. The program will display the postfix expression and generated three-address code.
+
+**Example:**
+```
+Input: a+b*c
+Postfix: abc*+
+Three Address Code:
+t1 = b * c
+t2 = a + t1
+```
+
+---
+
+# Experiment 10
+
+## Intermediate Code Representations (`qt.c`)
+
+**Description:**  
+A C program that extends the three-address code generator to produce multiple intermediate code representations: Three-Address Code (TAC), Quadruple, and Triple formats. These are different ways to represent intermediate code in compiler design, each with its own advantages for optimization and code generation phases.
+
+**Representations Generated:**
+1. **Three-Address Code**: Human-readable format with temporary variables
+2. **Quadruple**: 4-tuple format (Operator, Arg1, Arg2, Result) with explicit result field
+3. **Triple**: 3-tuple format (Operator, Arg1, Arg2) where results are referenced by position indices
+
+**Requirements:**  
+- C compiler (gcc)
+- User input (arithmetic expression without spaces)
+- Supports: single-letter/digit operands, operators (+, -, *, /, ^), parentheses
+
+**How to Run:**
+1. Navigate to the `experiment_10` directory.
+2. Compile the program:
+   ```sh
+   gcc qt.c -o qt.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./qt.exe
+   ```
+4. Enter an expression (e.g., "a+b*c", "(a+b)*(c-d)")
+5. The program will display:
+   - Postfix expression
+   - Three-address code
+   - Quadruple representation (with id, op, arg1, arg2, result columns)
+   - Triple representation (with id, op, arg1, arg2 - using position references)
+
+**Example:**
+```
+Input: a+b*c
+Postfix expression: abc*+
+
+Three Address Code:
+t1 = b * c
+t2 = a + t1
+
+Quadruple Representation:
+id  Op  Arg1  Arg2  Result
+1   *   b     c     t1
+2   +   a     t1    t2
+
+Triple Representation:
+id  Op  Arg1  Arg2
+0   *   b     c
+1   +   a     (0)
+```
+
+---
+
+# Experiment 11
+
+## Constant Propagation (`cp.c`)
+
+**Description:**  
+A C program that demonstrates constant propagation optimization on three-address code. It takes an arithmetic expression and constant values for variables, then performs constant propagation by replacing variable references with their constant values throughout the intermediate code. Finally, it evaluates the expression to compute the final result.
+
+**Optimization Process:**
+1. Generates three-address code from the input expression
+2. Replaces variable names with their constant values in the TAC
+3. Evaluates the optimized code to produce the final result
+
+**Requirements:**  
+- C compiler (gcc)
+- User input: 
+  - Arithmetic expression (without spaces)
+  - Constant values for variables a, b, x, y
+- Supports: operators (+, -, *, /), parentheses
+
+**How to Run:**
+1. Navigate to the `experiment_11` directory.
+2. Compile the program:
+   ```sh
+   gcc cp.c -o cp.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./cp.exe
+   ```
+4. Enter the expression (e.g., "a*b+x-y")
+5. Provide constant values for each variable (a, b, x, y)
+6. The program will display:
+   - Postfix expression
+   - Original three-address code
+   - Three-address code after constant propagation
+   - Final computed result
+
+**Example:**
+```
+Input expression: a*b+x-y
+Enter value of a: 5
+Enter value of b: 3
+Enter value of x: 10
+Enter value of y: 2
+
+Postfix Expression: ab*x+y-
+
+Three Address Code:
+t0 = a * b
+t1 = t0 + x
+t2 = t1 - y
+
+After Constant Propagation:
+t0 = 5 * 3
+t1 = 15 + 10
+t2 = 25 - 2
+
+Final Result = 23
+```
 
 ---
