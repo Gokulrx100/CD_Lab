@@ -49,6 +49,12 @@ This repository contains source code and instructions for various experiments co
 |--------------|-------------|--------------|
 | First and Follow (`FirstFollow.c`) | Computes FIRST and FOLLOW sets for a given grammar | [See below](#first-and-follow-firstfollowc) |
 
+### Experiment 8
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| Operator Precedence Parser (`op.c`) | Implements operator precedence parsing for expressions | [See below](#operator-precedence-parser-opc) |
+
+
 ---
 
 # Experiment 1
@@ -402,5 +408,38 @@ A C program that computes the FIRST and FOLLOW sets for a given context-free gra
    ```
 4. Enter the grammar productions when prompted
 5. The program will display the FIRST and FOLLOW sets for each non-terminal.
+
+---
+
+# Experiment 8
+
+## Operator Precedence Parser (`op.c`)
+
+**Description:**  
+A C program that implements an operator precedence parser for arithmetic expressions. It uses a shift-reduce parsing technique with operator precedence rules to validate expressions. The parser supports multiple operators with proper precedence and associativity rules, as well as parentheses for grouping.
+
+**Supported Features:**
+- Identifiers (represented as 'i')
+- Operators: `+`, `-`, `*`, `/`, `^` (power)
+- Parentheses: `(`, `)`
+- Operator precedence: `^` (highest) > `*`, `/` > `+`, `-` (lowest)
+- Right associativity for power operator (`^`)
+
+**Requirements:**  
+- C compiler (gcc)
+- User input (arithmetic expression)
+
+**How to Run:**
+1. Navigate to the `experiment_8` directory.
+2. Compile the program:
+   ```sh
+   gcc op.c -o op.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./op.exe
+   ```
+4. Enter an expression using 'i' for identifiers and operators
+5. The program will display the parsing steps with input, stack, and action columns.
 
 ---
