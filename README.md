@@ -44,6 +44,11 @@ This repository contains source code and instructions for various experiments co
 |--------------|-------------|--------------|
 | Recursive Descent Parser (`RecursiveDescentParser.c`) | Implements recursive descent parsing for arithmetic expressions | [See below](#recursive-descent-parser-recursivedescentparserc) |
 
+### Experiment 7
+| Program Name | Description | Instructions |
+|--------------|-------------|--------------|
+| First and Follow (`FirstFollow.c`) | Computes FIRST and FOLLOW sets for a given grammar | [See below](#first-and-follow-firstfollowc) |
+
 ---
 
 # Experiment 1
@@ -370,5 +375,32 @@ It demonstrates top-down parsing techniques.
    ```
 4. Enter an arithmetic expression (e.g., "a*b", "a*(b*c)", "(a*b)*c")
 5. The program will output whether the expression is syntactically valid or show a syntax error.
+
+---
+
+# Experiment 7
+
+## First and Follow (`FirstFollow.c`)
+
+**Description:**  
+A C program that computes the FIRST and FOLLOW sets for a given context-free grammar. These sets are essential for constructing predictive parsers and LL(1) parsing tables.
+
+**Requirements:**  
+- C compiler (gcc)
+- Input: Number of productions
+- Format: Productions in the form `A-alpha` where A is a non-terminal and alpha is a string of terminals/non-terminals
+
+**How to Run:**
+1. Navigate to the `experiment_7` directory.
+2. Compile the program:
+   ```sh
+   gcc FirstFollow.c -o firstfollow.exe
+   ```
+3. Run the executable:
+   ```sh
+   ./firstfollow.exe
+   ```
+4. Enter the grammar productions when prompted
+5. The program will display the FIRST and FOLLOW sets for each non-terminal.
 
 ---
